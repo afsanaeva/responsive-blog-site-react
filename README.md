@@ -1,3 +1,8 @@
+#Feature Used in this project:
+=>> React Material UI 
+=>> Responsive UI
+=>> Material Grid, Form, Navbar Modal, and more
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
