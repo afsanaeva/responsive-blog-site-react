@@ -1,12 +1,10 @@
-import './App.css';
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle =makeStyles((theme) =>({
   
 }))
 
-const App = () => {
+const Rightbar = () => {
   const classes = useStyle()
   return (
     <div className="App">
@@ -15,4 +13,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Rightbar
