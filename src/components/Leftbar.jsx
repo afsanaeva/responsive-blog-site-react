@@ -7,7 +7,7 @@ const useStyle =makeStyles((theme) =>({
 const Leftbar = () => {
   const classes = useStyle()
   return (
-    <div className="App">
+    <div>
      
     </div>
   )
