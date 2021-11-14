@@ -2,6 +2,8 @@ import { AppBar, makeStyles, Toolbar, Typography, InputBase, alpha, Badge,Avatar
 import MailIcon from '@material-ui/icons/Mail';
 import SearchIcon from '@material-ui/icons/Search';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
+import { useState } from 'react';
+import { Cancel } from '@material-ui/icons';
 
 const useStyle = makeStyles((theme) => ({
   logoLg: {
@@ -31,20 +33,31 @@ const useStyle = makeStyles((theme) => ({
       backgroundColor: alpha(theme.palette.common.white, 0.25)
     },
     width: "50% ",
+    [theme.breakpoints.down("sm")]: {
+          display: (props) =>props.open ? "flex" :"none",
+          width: "70% ",
+        },
   },
-  // searchButton: {
-  //   marginRight: theme.spacing(2),
-  //   [theme.breakpoints.up("sm")]: {
-  //     display: "none",
-  //   },
-  // },
+  searchButton: {
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
+
+  cancle:{
+    [theme.breakpoints.up("sm")]: {
+      display: "none",
+    },
+  },
   input: {
     color: "white",
     marginLeft: theme.spacing(2),
   },
   icons:{
-    display:"flex",
     alignItems:"center",
+    display: (props) =>props.open ? "none" :"flex",
+ 
   },
   badge:{
     marginRight: theme.spacing(2)
@@ -52,7 +65,8 @@ const useStyle = makeStyles((theme) => ({
 }))
 
 const Navbar = () => {
-  const classes = useStyle();
+  const[open, setOpen] = useState(false);
+  const classes = useStyle({open});
   return (
     <div>
       <AppBar>
@@ -66,10 +80,13 @@ const Navbar = () => {
           <div className={classes.search}>
             <SearchIcon />
             <InputBase placeholder="Search . . . " className={classes.input} />
+            <Cancel className={classes.cancle} onClick ={() => setOpen(false)}/>
           </div>
 
           <div className={classes.icons}>
-          {/* <SearchIcon className="searchButton"/> */}
+          <SearchIcon className="searchButton" 
+            onClick ={()=> setOpen(true)}
+          />
             <Badge badgeContent={4} color="secondary" className={classes.badge}>
             <MailIcon />
             </Badge>
